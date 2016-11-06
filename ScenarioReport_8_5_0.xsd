@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ispringsolutions.com/ispring/talkmaster/scenarioresults"
+           targetNamespace="http://www.ispringsolutions.com/ispring/talkmaster/scenarioresults" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="scenarioReport" type="CT_ScenarioReport"/>
+    <xs:complexType name="CT_ScenarioReport">
+        <xs:all>
+            <xs:element name="scenarioSettings" type="CT_ScenarioSettings"/>
+            <xs:element name="summary" type="CT_ScenarioSummary"/>
+            <xs:element name="scenes" type="CT_Scenes"/>
+        </xs:all>
+        <xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="CT_Scenes">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="scene" type="CT_Scene"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CT_Scene">
+        <xs:all>
+            <xs:element name="speechText" type="xs:string" default="" minOccurs="0"/>
+            <xs:element name="messageText" type="xs:string" default="" minOccurs="0"/>
+            <xs:element name="reply" type="CT_Reply" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="id" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="CT_ScenarioSettings">
+        <xs:choice minOccurs="0">
+            <xs:element name="passingScore" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:double">
+                        <xs:minInclusive value="0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute name="maxScore" type="xs:double" use="optional" default="0"/>
+        <xs:attribute name="scenarioType" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="CT_Variable">
+        <xs:attribute name="name" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="title" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="value" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="CT_Variables">
+        <xs:sequence>
+            <xs:element name="variable" type="CT_Variable" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CT_ScenarioSummary">
+        <xs:all>
+            <xs:element name="variables" type="CT_Variables" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="time" type="xs:unsignedInt" use="required"/>
+        <xs:attribute name="score" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:double">
+                    <xs:minInclusive value="0"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="CT_Reply">
+        <xs:sequence>
+            <xs:element name="text" type="xs:string" default="" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
