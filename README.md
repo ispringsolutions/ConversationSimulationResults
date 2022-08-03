@@ -2,7 +2,7 @@
 
 iSpring TalkMaster provides a variety of ways to deliver results for checking learners’ progress. Before you start configuring your server, make sure that these other options are not applicable in your case:
 
-- iSpring [Learning Management System](https://www.ispringsolutions.com/products/ispring-learn). This is the most preferable option, because it tracks detailed dialog simulation progress automatically. The dialog simulation and all statistics are stored in your own iSpring LMS account.
+- iSpring [Learning Management System](https://www.ispringsolutions.com/ispring-learn). This is the most preferable option, because it tracks detailed dialog simulation progress automatically. The dialog simulation and all statistics are stored in your own iSpring LMS account.
 - Any other SCORM-compliant [learning system](https://www.ispringsolutions.com/supported-lms). SCORM is a learning standard which makes tracking learners’ progress easy. You can host one or more LMSs on your own server(s), but generally, hosting is included with the system.
 - Email. This is a very easy way to collect results, but less structured. Your content can be hosted anywhere on the web or on local computers with internet access.
 
